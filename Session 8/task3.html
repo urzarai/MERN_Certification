@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      background-color: #2f5320;
+      color: white;
+      padding: 10px 20px;
+      font-weight: bold;
+      width: fit-content;
+      clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li::before {
+      content: "★";
+      color: red;
+      margin-right: 10px;
+    }
+    li {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Task</div>
+  <ul>
+    <li>Hummus</li>
+    <li>Pita</li>
+    <li>Green salad</li>
+    <li>Halloumi</li>
+  </ul>
+</body>
+</html>

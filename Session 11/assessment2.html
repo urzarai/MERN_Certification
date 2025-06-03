@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Music World</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: "Algerian";
+				background: url("./bg.jpg") no-repeat center center fixed;
+				background-size: cover;
+				color: white;
+				min-height: 100vh;
+				position: relative;
+			}
+
+			/* Grey overlay that covers the background */
+			body::before {
+				content: "";
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(255, 255, 255, 0.1);
+				z-index: 1;
+				pointer-events: none;
+			}
+
+			.container {
+				max-width: 1300px;
+				margin: 0 auto;
+				padding: 20px;
+				position: relative;
+			}
+
+			.header {
+				text-align: center;
+				margin-bottom: 10px;
+				position: relative;
+				z-index: 10;
+			}
+
+			.header h1 {
+				font-size: 36px;
+				font-weight: bold;
+				text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6),
+					2px 2px 2px rgba(255, 255, 255, 0.4),
+					3px 3px 3px rgba(255, 255, 255, 0.3), 4px 4px 4px rgba(0, 0, 0, 0.5),
+					5px 5px 5px rgba(0, 0, 0, 0.7);
+				margin-bottom: 10px;
+				border: 2px dotted rgba(255, 255, 255, 0.6);
+				border-radius: 10px;
+				padding-left: 50px;
+				text-align: left;
+				background: rgba(0, 0, 0, 0.7);
+				backdrop-filter: blur(10px);
+				position: relative;
+				z-index: 10;
+			}
+
+			.nav-bar {
+				background: rgba(240, 240, 240, 0.7);
+				border-radius: 20px;
+				padding: 8px;
+				display: flex;
+				gap: 5px;
+				backdrop-filter: blur(10px);
+				border: 2px dotted rgba(255, 255, 255, 0.6);
+				position: relative;
+				z-index: 10;
+			}
+
+			.nav-item {
+				padding: 8px 20px;
+				background-color: rgba(0, 0, 0, 0.7);
+				box-shadow: #111 0px 3px 0px;
+				border-radius: 10px;
+				text-decoration: none;
+				color: white;
+				font-size: 12px;
+				text-transform: uppercase;
+				transition: all 0.3s;
+			}
+
+			.nav-item:hover {
+				background: rgba(255, 255, 255, 0.3);
+				transform: translateY(-2px);
+			}
+
+			.section-container {
+				padding: 25px 15px;
+				font-weight: bold;
+				background: rgba(0, 0, 0, 0.7);
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+				border: 2px dotted rgba(255, 255, 255, 0.6);
+				backdrop-filter: blur(10px);
+				border-radius: 10px;
+				position: relative;
+				z-index: 10;
+			}
+
+			.section {
+				/* margin: 40px 0; */
+				border: 3px dotted rgba(255, 255, 255, 0.8);
+				border-radius: 10px;
+				/* backdrop-filter: blur(10px); */
+				position: relative;
+				z-index: 10;
+			}
+
+			.section:nth-child(even) {
+				margin: 10px 0;
+			}
+
+			.section-title {
+				padding: 10px 20px 10px 20px;
+				font-size: 18px;
+				padding-bottom: 10px;
+				color: #fff;
+				display: flex;
+				align-items: center;
+			}
+
+			.section-title::before {
+				content: "→";
+				margin-right: 10px;
+				color: #4a9eff;
+			}
+
+			.album-grid {
+				padding: 10px;
+				display: grid;
+				grid-template-columns: repeat(11, 1fr);
+				gap: 15px;
+				max-width: 100%;
+				overflow-x: auto;
+			}
+
+			.album-card {
+				position: relative;
+				border: 2px solid rgba(255, 255, 255, 0.4);
+				padding: 2px;
+				border-radius: 5px;
+				overflow: hidden;
+				cursor: pointer;
+				transition: transform 0.3s, box-shadow 0.3s;
+			}
+
+			.album-card:hover {
+				transform: scale(1.05);
+				box-shadow: 0 8px 25px rgba(74, 158, 255, 0.3);
+			}
+
+			.album-image {
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					45deg,
+					#ff6b6b,
+					#4ecdc4,
+					#45b7d1,
+					#f9ca24,
+					#f0932b,
+					#eb4d4b,
+					#6c5ce7
+				);
+				background-size: 400% 400%;
+				animation: gradientShift 8s ease infinite;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 12px;
+				font-weight: bold;
+				text-align: center;
+				color: white;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+			}
+
+			.album-card:nth-child(odd) .album-image {
+				background: linear-gradient(135deg, #667eea, #764ba2);
+			}
+
+			.album-card:nth-child(even) .album-image {
+				background: linear-gradient(135deg, #f093fb, #f5576c);
+			}
+
+			.album-card:nth-child(3n) .album-image {
+				background: linear-gradient(135deg, #4facfe, #00f2fe);
+			}
+
+			.album-card:nth-child(4n) .album-image {
+				background: linear-gradient(135deg, #43e97b, #38f9d7);
+			}
+
+			.album-card:nth-child(5n) .album-image {
+				background: linear-gradient(135deg, #fa709a, #fee140);
+			}
+
+			@keyframes gradientShift {
+				0% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
+				100% {
+					background-position: 0% 50%;
+				}
+			}
+
+			.play-button {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 40px;
+				height: 40px;
+				background: rgba(255, 255, 255, 0.9);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				opacity: 0;
+				transition: opacity 0.3s;
+			}
+
+			.album-card:hover .play-button {
+				opacity: 1;
+			}
+
+			.play-button::after {
+				content: "▶";
+				color: #333;
+				font-size: 16px;
+				margin-left: 2px;
+			}
+
+			@media (max-width: 768px) {
+				.container {
+					padding: 15px;
+				}
+
+				.header h1 {
+					font-size: 28px;
+				}
+
+				.nav-bar {
+					flex-wrap: wrap;
+					gap: 8px;
+				}
+
+				.nav-item {
+					font-size: 10px;
+					padding: 6px 15px;
+				}
+
+				.album-grid {
+					grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+					gap: 10px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h1>Music World</h1>
+				<div class="nav-bar">
+					<a href="#" class="nav-item">Home</a>
+					<a href="#" class="nav-item">About Us</a>
+					<a href="#" class="nav-item">Category ↓</a>
+					<a href="#" class="nav-item">Production</a>
+					<a href="#" class="nav-item">Gallery</a>
+					<a href="#" class="nav-item">Contact Us</a>
+					<a href="#" class="nav-item">Login</a>
+				</div>
+			</div>
+			<div class="section-container">
+				<div class="section">
+					<div class="section-title">Latest Album ...</div>
+					<hr style="border: 1px solid rgba(255, 255, 255, 0.7); width: 100%" />
+					<div class="album-grid">
+						<div class="album-card">
+							<img src="./Img1,1.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,2.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,3.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,4.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,5.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,1.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,2.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,3.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="section-title">TOP 10 Songs ...</div>
+					<hr style="border: 1px solid rgba(255, 255, 255, 0.7); width: 100%" />
+					<div class="album-grid">
+						<div class="album-card">
+							<img src="./Img1,4.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,5.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,1.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,2.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,1.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,2.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,3.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,3.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="section-title">TOP 10 Artist ...</div>
+					<hr style="border: 1px solid rgba(255, 255, 255, 0.7); width: 100%" />
+					<div class="album-grid">
+						<div class="album-card">
+							<img src="./Img1,1.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,2.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,3.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,4.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,5.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,1.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,2.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,3.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,4.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+						<div class="album-card">
+							<img src="./Img1,5.jpg" alt="Album Cover" class="album-image" />
+							<div class="play-button"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

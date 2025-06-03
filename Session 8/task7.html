@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Navigation Menu with Top and Side Space</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: white;
+				font-family: "Comic Sans MS", cursive, sans-serif;
+			}
+
+			.top-space {
+				height: 30px; /* white space above the nav bar */
+				background-color: white;
+			}
+
+			.navbar-wrapper {
+				background-color: white;
+				padding: 0 60px; /* equal white space on left and right */
+			}
+
+			.navbar {
+				background-color: black;
+				box-shadow: 0 3px 0 orange;
+				overflow: hidden;
+			}
+
+			.nav-list {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				display: flex;
+			}
+
+			.nav-list li {
+				border-right: 2px solid orange;
+			}
+
+			.nav-list li:last-child {
+				border-right: none;
+			}
+
+			.nav-list li a {
+				display: block;
+				padding: 15px 25px;
+				text-decoration: none;
+				color: white;
+				font-size: 18px;
+				transition: background 0.3s;
+			}
+
+			.nav-list li a:hover {
+				background-color: orange;
+				color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="top-space"></div>
+		<div class="navbar-wrapper">
+			<nav class="navbar">
+				<ul class="nav-list">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Product</a></li>
+					<li><a href="#">Services</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">Users</a></li>
+					<li><a href="#">Login</a></li>
+				</ul>
+			</nav>
+		</div>
+	</body>
+</html>

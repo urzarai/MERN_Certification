@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Appointment Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }
+
+    .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .left-image {
+      flex: 1;
+      padding-right: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .left-image img {
+      width: 320px; /* Increased size */
+      height: auto;
+    }
+
+    .appointment-form {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    hr {
+      border: 1px solid #c00;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    input[type="tel"],
+    textarea {
+      margin-bottom: 15px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 60px;
+    }
+
+    .name-fields {
+      display: flex;
+      gap: 10px;
+    }
+
+    .address-fields {
+      display: flex;
+      gap: 10px;
+    }
+
+    .gender-options,
+    .checkbox-group {
+      margin-bottom: 15px;
+    }
+
+    .checkbox-group label {
+      display: block;
+      font-weight: normal;
+    }
+
+    .submit-button {
+      width: 80px;
+      padding: 8px;
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-image">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY9yXwqL55B8gFWxL3u63cICHFe2HFSnZSCYv00--NKOfb0hC1XZ-uW8s6lY1cW20oPUI&usqp=CAU" alt="Doctor Image">
+    </div>
+    <div class="appointment-form">
+      <h2>Doctor Appointment Form</h2>
+      <hr>
+      <form>
+        <label for="date">Appointment Date</label>
+        <input type="date" id="date" name="date">
+
+        <label for="time">Appointment Time</label>
+        <input type="time" id="time" name="time">
+
+        <label>Name</label>
+        <div class="name-fields">
+          <input type="text" placeholder="First">
+          <input type="text" placeholder="Last">
+        </div>
+
+        <label>Gender</label>
+        <div class="gender-options">
+          <input type="radio" id="male" name="gender" value="male">
+          <label for="male" style="display: inline;">Male</label>
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="female" style="display: inline;">Female</label>
+        </div>
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="####">
+
+        <label>Address</label>
+        <div class="address-fields">
+          <input type="text" placeholder="city">
+          <input type="text" placeholder="state">
+        </div>
+
+        <label for="query">Your Query</label>
+        <textarea id="query" name="query"></textarea>
+
+        <label>Appointment Type</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="type" value="cervix"> Cervix checkup</label>
+          <label><input type="checkbox" name="type" value="heart"> Heart checkup</label>
+          <label><input type="checkbox" name="type" value="eye"> Eye check-up</label>
+          <label><input type="checkbox" name="type" value="hearing"> Hearing Test</label>
+        </div>
+
+        <button type="submit" class="submit-button">Send</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

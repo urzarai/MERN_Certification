@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Table Task</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: white;
+				margin: 0;
+				padding: 40px;
+			}
+
+			h2 {
+				background-color: darkgreen;
+				color: white;
+				padding: 10px 20px;
+				width: fit-content;
+				clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0% 100%);
+				margin-bottom: 10px;
+			}
+
+			table {
+				width: 80%;
+				background-color: #b3e6e6;
+				margin-bottom: 20px;
+				text-align: left;
+			}
+
+			th,
+			td {
+				padding: 12px 30px;
+			}
+
+			.table1 {
+				border-collapse: collapse;
+			}
+
+			.table1 th,
+			.table1 td {
+				border: 2px solid #fff;
+			}
+
+			/* No space between border bubble and element bubbles */
+			.table2-container {
+				width: 80%;
+				padding: 0; /* No padding */
+				border: 1px solid black;
+				border-radius: 20px;
+				background-color: #b3e6e6;
+			}
+
+			.table2 {
+				padding: 1px;
+				margin: 0;
+				height: 100%;
+				width: 100%;
+				border-collapse: separate;
+				border-radius: 20px;
+			}
+
+			.table2 th,
+			.table2 td {
+				border: 1px solid black;
+				border-radius: 20px;
+				padding: 12px 30px;
+				background-color: #b3e6e6;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Table-Task</h2>
+
+		<!-- Table 1 -->
+		<table class="table1">
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Age</th>
+			</tr>
+			<tr>
+				<td>Jill</td>
+				<td>Smith</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Eve</td>
+				<td>Jackson</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>John</td>
+				<td>Doe</td>
+				<td>80</td>
+			</tr>
+		</table>
+
+		<!-- Table 2 with bubble effect and spacing -->
+		<div class="table2-container">
+			<table class="table2">
+				<tr>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Age</th>
+				</tr>
+				<tr>
+					<td>Jill</td>
+					<td>Smith</td>
+					<td>50</td>
+				</tr>
+				<tr>
+					<td>Eve</td>
+					<td>Jackson</td>
+					<td>94</td>
+				</tr>
+				<tr>
+					<td>John</td>
+					<td>Doe</td>
+					<td>80</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

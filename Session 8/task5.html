@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Navigation Bars</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 700px;
+    }
+
+    .nav-section {
+      text-align: center;
+    }
+
+    .vertical-nav {
+      background-color: #d3edf6;
+      width: 150px;
+      border: 1px solid #aaa;
+    }
+
+    .vertical-nav a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .vertical-nav a:first-child {
+      background-color: orange;
+      color: white;
+      font-weight: bold;
+    }
+
+    .vertical-nav a:not(:first-child) {
+      color: blue;
+    }
+
+    .horizontal-nav {
+      border: 2px solid #999;
+      display: flex;
+      margin-top: 15px;
+    }
+
+    .horizontal-nav a {
+      padding: 10px 20px;
+      text-decoration: none;
+      border-right: 1px solid #999;
+      text-align: center;
+      font-size: 18px;
+      width: 100px;
+    }
+
+    .horizontal-nav a:last-child {
+      border-right: none;
+    }
+
+    .horizontal-nav a:first-child {
+      background-color: #999;
+      color: white;
+      font-weight: bold;
+    }
+
+    .horizontal-nav a:not(:first-child) {
+      color: blue;
+    }
+
+    h4 {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="nav-section">
+      <h4>Vertical Navigation Bar</h4>
+      <div class="vertical-nav">
+        <a href="#">Home</a>
+        <a href="#">Java</a>
+        <a href="#">CSS</a>
+        <a href="#">HTML</a>
+        <a href="#">Bootstrap</a>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <h4>Horizontal Navigation Bar</h4>
+      <div class="horizontal-nav">
+        <a href="#">Home</a>
+        <a href="#">Java</a>
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
